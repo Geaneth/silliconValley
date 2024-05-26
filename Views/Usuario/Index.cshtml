@@ -1,29 +1,53 @@
-@model silliconValley.Models.ApiUser
-<h2>Usuario</h2>
-@using (Html.BeginForm("EnviarMensaje", "Usuario", FormMethod.Post))
-{
-    <div class="form-group">
-        @Html.LabelFor(model => model.id)
-        @Html.TextBoxFor(model => model.id, new { @class = "form-control" })
-        @Html.ValidationMessageFor(model => model.id)
-    </div>
+@model IEnumerable<silliconValley.Models.ApiUser>
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.first_name)
-        @Html.TextBoxFor(model => model.first_name, new { @class = "form-control" })
-        @Html.ValidationMessageFor(model => model.first_name)
-    </div>
-<div class="form-group">
-        @Html.LabelFor(model => model.last_name)
-        @Html.TextBoxFor(model => model.last_name, new { @class = "form-control" })
-        @Html.ValidationMessageFor(model => model.last_name)
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.job)
-        @Html.TextBoxFor(model => model.job, new { @class = "form-control" })
-        @Html.ValidationMessageFor(model => model.job)
-    </div>
-<button type="submit" class="btn btn-primary">Enviar</button>
+@{
+    ViewData["Title"] = "Index";
 }
- <h1>@ViewData["Message"]</h1>
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.first_name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.last_name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.job)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.first_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.last_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.job)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

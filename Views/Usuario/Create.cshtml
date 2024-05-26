@@ -1,0 +1,29 @@
+@model silliconValley.Models.ApiUser
+<h2>Usuario</h2>
+@using (Html.BeginForm("EnviarMensaje", "Usuario", FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.LabelFor(model => model.id)
+        @Html.TextBoxFor(model => model.id, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.id)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.first_name)
+        @Html.TextBoxFor(model => model.first_name, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.first_name)
+    </div>
+<div class="form-group">
+        @Html.LabelFor(model => model.last_name)
+        @Html.TextBoxFor(model => model.last_name, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.last_name)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.job)
+        @Html.TextBoxFor(model => model.job, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.job)
+    </div>
+<button type="submit" class="btn btn-primary">Enviar</button>
+}
+ <h1>@ViewData["Message"]</h1>
