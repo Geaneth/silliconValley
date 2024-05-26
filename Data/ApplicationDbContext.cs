@@ -9,4 +9,5 @@ public class ApplicationDbContext : IdentityDbContext
         : base(options)
     {
     }
+        public DbSet<silliconValley.Models.ApiUser> DataUsuario {get; set; }
 }
